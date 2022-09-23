@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #222222;
+    gap: 2px;
+    padding: 2px;
+}
+
+.grid-row {
+    display: flex;
+    justify-content: center;
+    background-color: #444444;
+    gap: 2px;
+}
+
+.grid-col {
+    width: 32px;
+    height: 32px;
+    background-color: #666666;
+}
