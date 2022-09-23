@@ -1,4 +1,5 @@
 function createGrid(gridSize) {
+    const containerSize = 640;
     const gridContainer = document.createElement("div");
     gridContainer.classList.add("grid-container");
 
@@ -8,7 +9,10 @@ function createGrid(gridSize) {
 
         for (let col = 0; col < gridSize; col++) {
             const gridCol = document.createElement("div");
-            gridCol.classList.add("grid-col");
+            gridCol.style.width = String((containerSize / gridSize) - 2) + "px";
+            gridCol.style.height = String((containerSize / gridSize) - 2) + "px";
+            gridCol.style.border = "1px solid gray";
+
             gridCol.addEventListener("mouseover", function (e) {
                 const gridHover = e.target;
                 gridHover.classList.add("hover");
@@ -29,7 +33,7 @@ function removeGrid() {
 }
 
 function getGridSize() {
-    const gridSize = Number(prompt("Input Grid Size (1 - 100)", "16"));
+    let gridSize = Number(prompt("Input Grid Size (1 - 100)", "16"));
 
     if (isNaN(gridSize)) {
         alert("Please Input a Number!");
