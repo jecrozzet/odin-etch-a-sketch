@@ -22,3 +22,7 @@ body {
     height: 32px;
     background-color: #666666;
 }
+
+.hover {
+    background-color: #888888;
+}
