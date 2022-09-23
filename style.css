@@ -2,6 +2,19 @@ body {
     margin: 0;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+    background-color: #222222;
+}
+
+#change-button {
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+}
+
 .grid-container {
     display: flex;
     flex-direction: column;
