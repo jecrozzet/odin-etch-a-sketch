@@ -4,4 +4,4 @@ Learned JavaScript Skills:
   - More HTML DOM Manipulation
   
 Other Learned Skills:
-  - Git commit practice
+  - Git Commit Practice
