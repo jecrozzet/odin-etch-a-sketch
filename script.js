@@ -14,16 +14,10 @@ function createGrid(gridSize) {
             gridCol.classList.add("grid-col", "grid-on");
 
             gridCol.addEventListener("mouseover", function (e) {
-                if(e.buttons === 1) {
-                    const gridOver = e.target;
-                    gridOver.classList.add("painted");
-                }
+                if(e.buttons === 1) sketch(e.target);
             });
             gridCol.addEventListener("mousedown", function (e) {
-                if(e.buttons === 1) {
-                    const gridOver = e.target;
-                    gridOver.classList.add("painted");
-                }
+                if(e.buttons === 1) sketch(e.target);
             });
 
             gridRow.appendChild(gridCol);
@@ -57,16 +51,49 @@ function getGridSize() {
     return gridSize;
 }
 
+function sketch(target){
+    switch (sketchMode) {
+        case 1:
+            target.classList.add("sketched");
+            break;
+        case 2:
+            target.classList.remove("sketched");
+            break;
+        case 3:
+            target.classList.toggle("sketched");
+            break;
+    }
+}
+
 let gridSize = 16;
+let sketchMode = 1;
 createGrid(gridSize);
 
-const changeButton = document.querySelector("#change-button");
-changeButton.addEventListener("click", function () {
+const sizeButton = document.querySelector("#size-button");
+sizeButton.addEventListener("click", function () {
     gridSize = getGridSize();
 
     if (gridSize) {
         removeGrid();
         createGrid(gridSize);
+    }
+});
+
+const modeButton = document.querySelector("#mode-button");
+modeButton.addEventListener("click", function () {
+    sketchMode++;
+    if (sketchMode > 3) sketchMode = 1;
+
+    switch (sketchMode) {
+        case 1:
+            modeButton.textContent = "Sketch \r\n Mode";
+            break;
+        case 2:
+            modeButton.textContent = "Eraser \r\n Mode";
+            break
+        case 3:
+            modeButton.textContent = "Toggle \r\n Mode";
+            break;
     }
 });
 
@@ -83,6 +110,6 @@ const clearButton = document.querySelector("#clear-button");
 clearButton.addEventListener("click", function () {
     const gridCols = document.querySelectorAll(".grid-col");
     gridCols.forEach(gridCol => { 
-        gridCol.classList.remove("painted");
+        gridCol.classList.remove("sketched");
     });
 });
